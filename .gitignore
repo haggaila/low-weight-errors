@@ -1,0 +1,20 @@
+# editor files
+.vscode/
+*__pycache__*
+.idea/
+
+# standard ignores
+*~
+*.o
+*.dat
+*.exe
+*.aux
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.xml
+*.iml
+*.dvi
+*.ops
+#*.pkl

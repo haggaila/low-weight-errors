@@ -1,0 +1,28 @@
+# This file allows to define a noise model with global and local error rates.
+
+prep: 0.001
+id_s: 0.001
+id_l: 0.001
+cnot: 0.001
+meas: 0.001
+bias: 0.000
+flip: 0.00
+leak: 0.00
+seep: 0.0
+back: 0.0
+corr: 0.0
+
+#distributions:
+#  prep: ["normal", 0.001, 0.0002]
+#  id_s: ["normal", 0.001, 0.0002]
+#  id_l: ["normal", 0.003, 0.0005]
+#  cnot: ["normal", 0.001, 0.0002]
+#  meas: ["normal", 0.003, 0.0005]
+
+b_error_before_gate: False
+
+#cycles:
+#  4:
+#    prep: 0.001
+#    id_l: 0.01
+#metadata: 0.01
