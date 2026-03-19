@@ -21,7 +21,8 @@ fontsize = 22
 pixel_scale = 1
 b_save_figures = True
 iterations = 4 * 60 + 11
-detectors = 122
+faults = 122
+b_inv = False
 
 plt.rc("font", family="serif")
 plt.rcParams["font.size"] = fontsize
@@ -33,11 +34,12 @@ iterations_sum = np.sum(decoding_bits, axis=0)
 iterations_order = np.argsort(iterations_sum)
 
 im = np.kron(
-    decoding_bits[i0 : i0 + iterations, iterations_order[-detectors:-1]],
+    decoding_bits[i0 : i0 + iterations, iterations_order[-faults:-1]],
     np.ones((1, pixel_scale), dtype=decoding_bits.dtype),
 )
 im = np.transpose(im)
-im = np.invert(im) - 254
+if b_inv:
+    im = np.invert(im) - 254
 fig, axs = plt.subplots(1, 1, figsize=(12, 6.5))
 plt.imshow(
     im[::-1,] * 255,
@@ -50,9 +52,9 @@ plt.imshow(
 # plt.axis('off')
 plt.tight_layout(pad=1.2)
 plt.xlabel("BP iteration", fontsize=fontsize)
-plt.ylabel("Detector", fontsize=fontsize)
+plt.ylabel("Fault", fontsize=fontsize)
 if b_save_figures:
-    s_file_name = s_plot_path + "fault.inv"
+    s_file_name = s_plot_path + "fault" + (".inv" if b_inv else "")
     plt.savefig(s_file_name + ".pdf")
 
 decoding_bits = np.load(s_output_path + "/relay_bp_data/x_decoding_c.npy")
@@ -61,11 +63,12 @@ iterations_sum = np.sum(decoding_bits, axis=0)
 iterations_order = np.argsort(iterations_sum)
 
 im = np.kron(
-    decoding_bits[i0 : i0 + iterations, iterations_order[-detectors:-1]],
+    decoding_bits[i0 : i0 + iterations, iterations_order[-faults:-1]],
     np.ones((1, pixel_scale), dtype=decoding_bits.dtype),
 )
 im = np.transpose(im)
-im = np.invert(im) - 254
+if b_inv:
+    im = np.invert(im) - 254
 fig, axs = plt.subplots(1, 1, figsize=(12, 6.5))
 plt.imshow(
     im[::-1,] * 255,
@@ -77,9 +80,9 @@ plt.imshow(
 )
 plt.tight_layout(pad=1.2)
 plt.xlabel("BP iteration", fontsize=fontsize)
-plt.ylabel("Detector", fontsize=fontsize)
+plt.ylabel("Fault", fontsize=fontsize)
 if b_save_figures:
-    s_file_name = s_plot_path + "success.inv"
+    s_file_name = s_plot_path + "success" + (".inv" if b_inv else "")
     plt.savefig(s_file_name + ".pdf")
 
 plt.show()
