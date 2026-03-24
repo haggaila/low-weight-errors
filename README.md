@@ -2,7 +2,7 @@
 
 A Python framework for simulating and analyzing quantum error correction using Bivariate Bicycle (BB) codes with focus on low-weight error patterns and decoder performance.
 
-Accompanies the research paper: https://arxiv.org/abs/2603.?????
+Accompanies the research paper _Low-weight quantum syndrome errors in belief propagation decoding_: https://arxiv.org/abs/2603.19126
 
 ## References
 
@@ -12,6 +12,11 @@ This code is based on research on Bivariate Bicycle codes:
 - Previous version of this repository, for the earlier paper: https://github.com/haggaila/bb-decoding
 - Feedforward and state-dependent errors (including leakage) paper: https://arxiv.org/abs/2504.13083, https://doi.org/10.1103/ght4-yqmb
 
+## License
+
+This code is licensed under the Apache License, Version 2.0. See LICENSE file for details.
+
+If you use this code in your research, please cite the original BB codes paper and repo pointed to above, and the current paper and repo.
 
 ## Overview
 
@@ -270,11 +275,3 @@ Plotting scripts in `paper_plots/` directory analyze results:
 - `plot-decoding-bitmaps.py`: Visualize syndrome patterns
 - `plot-detectors-analysis.py`: Detector statistics
 - `plot-randomized-errors.py`: Randomized weight-5 fault analysis
-
-## License
-
-This code is licensed under the Apache License, Version 2.0. See LICENSE file for details.
-
-## Citation
-
-If you use this code in your research, please cite the original BB codes paper and the current paper;
